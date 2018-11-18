@@ -1,0 +1,23 @@
+<!--<input type="text" [(ngModel)]="article.title">
+<br />
+<textarea [(ngModel)]="article.body"></textarea>
+<br />
+<button (click)="submit()">Envoyer</button>
+-->
+
+<ng-container *ngIf="articleForm">
+  <ng-container [formGroup]="articleForm">
+    <input type="text" formControlName="title"><br>
+    <ng-container *ngIf="articleForm && articleForm.controls['title'].dirty">
+      <ng-container *ngIf="articleForm.controls['title'].errors['required']">
+        Champ requis
+      </ng-container>
+      <ng-container *ngIf="articleForm.controls['title'].errors['minlength']">
+        Minimum de {{articleForm.controls['title'].errors['minlength'].requiredLength}} charactere requis
+      </ng-container>
+
+    </ng-container>
+    <textarea formControlName="body"></textarea><br>
+    <button (click)="submit()"[disabled]="!articleForm.valid">Valider</button>
+  </ng-container>
+</ng-container>

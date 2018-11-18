@@ -1,0 +1,14 @@
+<ng-container *ngIf="article">
+  <div class="title">{{ article.title }}</div>
+  <div class="body">{{ article.body }}</div>
+  <a [routerLink]="'/article/' + articleId + '/edit'">Modifier</a> <br />
+  <button (click)="delete()">Supprimer</button>
+</ng-container>
+
+<ng-container *ngIf="comments">
+  <div class="comment" *ngFor="let comment of comments">
+    {{ comment.name }}<br />
+    {{ comment.body }}<br />
+    {{ comment.email }}<br /><br />
+  </div>
+</ng-container>
