@@ -1,9 +1,24 @@
-<input type="text"[(ngModel)]="search" placeholder="rechercher">
-
-<ng-container *ngIf="articles">
-  <div class="article" *ngFor="let article of articles | articleFilter : 20 : search">
-    <div class="title">{{ article.title }}</div>
-    <div class="body">{{ article.body }}</div>
-    <a [routerLink]="'/article/' + article.id">Voir</a>
-  </div>
-</ng-container>
+<div class="container">
+  <input type="text"[(ngModel)]="search" placeholder="rechercher">
+  <label for="recherche"></label>
+  <table>
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Titre</th>
+        <th>Body</th>
+        <th>Voir</th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngIf="articles">
+      <tr class="article" *ngFor="let article of articles | articleFilter : 20 : search">
+        <td>{{ article.id }}</td>
+        <td>{{ article.title }}</td>
+        <td>{{ article.body }}</td>
+        <td><a class="waves-effect waves-light btn-small blue" [routerLink]="'/article/' + article.id">Voir</a></td>
+      </tr>
+      </ng-container>
+      </tbody>
+    </table>
+</div>
